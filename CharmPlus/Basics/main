@@ -1,0 +1,43 @@
+
+
+import string
+
+def encrypt(text,shift):
+    alphabets = string.ascii_lowercase
+    list_alpa = list(alphabets)
+    x = 0
+    encrypted_list = []
+    for char in text:
+        if char == " ":
+            encrypted_list.append(char)
+            continue
+        for index,letter in enumerate(list_alpa):
+            #print(list_alpa)
+            if char == letter.upper() or char == letter.lower():
+                ind = index + shift
+                if ind > 25:
+                    ind = ind - 26
+                encrypted_list.append(list_alpa[ind])
+                print(list_alpa[index])
+                break
+    #print(encrypted_list)
+    return "".join(encrypted_list)
+
+
+def decrypt(text, shift):
+    alphas = string.ascii_lowercase
+    decrypted = []
+    for char in text:
+        if char == " ":
+            decrypted.append(char)
+            continue
+        for (index, letter) in enumerate(alphas):
+            if letter == char:
+                newIndex = index - shift
+                if newIndex < 0:
+                    newIndex = newIndex + 26
+                new_char = alphas[newIndex]
+                decrypted.append(new_char)
+
+    print(decrypted)
+    return "".join(decrypted)
